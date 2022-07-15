@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head"></head>
+<body>
+<h3>Add product</h3>
+<p>
+    <a th:href="@{/product}">
+        Back to product list
+    </a>
+</p>
+<div id="form">
+    <form th:action="@{/product/save}"
+          method="POST" novalidate="novalidate">
+        <table>
+            <tr>
+                <td>Id</td>
+                <td><input type="number" name="idProduct"/></td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td><input type="text" name="nameProduct"/></td>
+            </tr>
+            <tr>
+                <td>Price</td>
+                <td><input type="number" name="price"/></td>
+            </tr>
+            <tr>
+                <td>ImgSrc</td>
+                <td><input type="text" name="img"/></td>
+            </tr>
+            <tr>
+                <td>Category</td>
+                <td><SELECT name="cate">
+                    <option th:each="cate:${category}" th:text="${cate.getNameCate()}" th:value="${cate.getId()}">
+                    </option>
+                </SELECT></td>
+            </tr>
+            <tr>
+                <td>Status</td>
+                <td><SELECT name="status">
+                    <option value="true">True</option>
+                    <option value="false">False</option>
+                </SELECT></td>
+            </tr>
+            <tr><td><button type="submit">Summit</button></td></tr>
+
+        </table>
+    </form>
+</div>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head"></head>
+<body>
+<h3>Edit product</h3>
+<p>
+    <a th:href="@{/product}">
+        Back to customer list
+    </a>
+</p>
+<div id="form">
+    <form action="#" th:action="@{/product/update}" th:object="${product}"
+          method="POST" novalidate="novalidate">
+        <table>
+            <tr>
+                <td>Id</td>
+                <td><input type="number" readonly name="idProduct" th:value="${product.idProduct}"/></td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td><input type="text" name="nameProduct" th:value="${product.nameProduct}"/></td>
+            </tr>
+            <tr>
+                <td>Price</td>
+                <td><input type="number" name="price" th:value="${product.getPrice()}" /></td>
+            </tr>
+            <tr>
+                <td>ImgSrc</td>
+                <td><input type="text" name="img" th:value="${product.getImg()}"/></td>
+            </tr>
+            <tr>
+                <td>Category</td>
+                <td><input type="text" readonly name="cate"  th:value="${product.getCategory().getId()}" th:text="${product.getCategory().getNameCate()}"/></td>
+            </tr>
+            <tr>
+                <td>Status</td>
+                <td><SELECT name="status" th:field="*{status}">
+                    <option th:value="true">True</option>
+                    <option th:value="false">False</option>
+                </SELECT></td>
+            </tr>
+            <tr><td><button type="submit">Summit</button></td></tr>
+
+        </table>
+    </form>
+</div>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>
+
