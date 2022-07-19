@@ -1,10 +1,17 @@
 package model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class Product {
+    @Id
     private int idProduct;
     private String nameProduct;
     private int price;
     private String img;
+    @ManyToOne
     private Category category;
     private boolean status;
 
@@ -15,6 +22,10 @@ public class Product {
         this.img = img;
         this.category = category;
         this.status = status;
+    }
+
+    public Product() {
+
     }
 
     public int getIdProduct() {

@@ -10,7 +10,7 @@
 </p>
 <div id="form">
     <form th:action="@{/product/save}"
-          method="POST" novalidate="novalidate">
+          method="POST" novalidate="novalidate" enctype="multipart/form-data">
         <table>
             <tr>
                 <td>Id</td>
@@ -22,11 +22,11 @@
             </tr>
             <tr>
                 <td>Price</td>
-                <td><input type="number" name="price"/></td>
+                <td><input type="number" name="price" /></td>
             </tr>
             <tr>
                 <td>ImgSrc</td>
-                <td><input type="text" name="img"/></td>
+                <td><input type="file" name="file"/></td>
             </tr>
             <tr>
                 <td>Category</td>

@@ -10,7 +10,7 @@
 </p>
 <div id="form">
     <form action="#" th:action="@{/product/update}" th:object="${product}"
-          method="POST" novalidate="novalidate">
+          method="POST" novalidate="novalidate" enctype="multipart/form-data">
         <table>
             <tr>
                 <td>Id</td>
@@ -22,15 +22,22 @@
             </tr>
             <tr>
                 <td>Price</td>
-                <td><input type="number" name="price" th:value="${product.getPrice()}" /></td>
+                <td><input type="number" name="price" th:value="${product.getPrice()}"/></td>
             </tr>
-            <tr>
+            <tr hidden>
                 <td>ImgSrc</td>
                 <td><input type="text" name="img" th:value="${product.getImg()}"/></td>
             </tr>
             <tr>
+                <td>ImgSrc</td>
+                <td><input type="file" name="file" th:value="${product.getImg()}"/></td>
+            </tr>
+            <tr>
                 <td>Category</td>
-                <td><input type="text" readonly name="cate"  th:value="${product.getCategory().getId()}" th:text="${product.getCategory().getNameCate()}"/></td>
+                <td><SELECT name="cate">
+                    <option th:each="cate:${category}" th:text="${cate.getNameCate()}" th:value="${cate.getId()}" th:selected="${cate.getId()==product.category.getId()}" >
+                    </option>
+                </SELECT></td>
             </tr>
             <tr>
                 <td>Status</td>
@@ -39,7 +46,11 @@
                     <option th:value="false">False</option>
                 </SELECT></td>
             </tr>
-            <tr><td><button type="submit">Summit</button></td></tr>
+            <tr>
+                <td>
+                    <button type="submit">Summit</button>
+                </td>
+            </tr>
 
         </table>
     </form>
